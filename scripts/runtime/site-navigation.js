@@ -18,10 +18,10 @@
 // Shared global navigation model used by all pages.
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about/" },
-  { label: "Services", href: "/services/" },
-  { label: "Insights", href: "/insights/" },
-  { label: "Connect", href: "/connect/" }
+  { label: "About", href: "/romanbediner-preview/about/" },
+  { label: "Services", href: "/romanbediner-preview/services/" },
+  { label: "Insights", href: "/romanbediner-preview/insights/" },
+  { label: "Connect", href: "/romanbediner-preview/connect/" }
 ];
 
 // Normalize paths so active-state matching is stable with or without trailing slashes.
