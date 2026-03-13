@@ -1,0 +1,216 @@
+/* Insights uses the same typography and spacing baseline as the core pages. */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg-color: #ffffff;
+  --surface-color: #f6f7f8;
+  --text-color: #111111;
+  --muted-text: #6a6a6a;
+  --border-color: #e6e6e6;
+  --accent-blue: #3b6cff;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Keep header/container width consistent with Home/About/Services/Connect. */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Insights page layout keeps a restrained, executive presentation. */
+.insights-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Section accent reinforces the briefing heading. */
+.section-accent {
+  width: 56px;
+  height: 3px;
+  background: rgba(59, 108, 255, 0.62);
+  border-radius: 999px;
+}
+
+/* Integrated callout framing the insights narrative. */
+.executive-callout {
+  margin-top: 0;
+  padding: 0;
+  border-left: 3px solid var(--accent-blue);
+  padding-left: 24px;
+  background: none;
+  border-radius: 0;
+  font-size: 20px;
+  margin-bottom: 48px;
+  line-height: 1.6;
+  color: var(--text-color);
+  max-width: 100%;
+}
+
+.executive-callout strong {
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+/* Brief cards use editorial spacing with a restrained divider rhythm. */
+.insight-card {
+  border-bottom: 1px solid var(--border-color);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.insight-brief {
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--border-color);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.insight-card:last-child,
+.insight-brief:last-child {
+  border-bottom: none;
+}
+
+.insight-card + .insight-card {
+  margin-top: 0;
+}
+
+.insight-card:hover {
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+/* Preserve the top blue divider used as the card identity marker. */
+.insight-accent {
+  width: 56px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(59, 108, 255, 0.62);
+  margin: 0 0 16px 0;
+}
+
+.brief-header h2 {
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brief-header time {
+  display: none;
+}
+
+.brief-intro p {
+  font-size: 19px;
+  color: var(--text-color);
+  max-width: 760px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.insight-summary {
+  margin: 0;
+}
+
+.insight-card .service-list {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+/* Toggle remains minimal and aligns with the page tone. */
+.insight-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.insight-toggle {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-color, #111111);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 20px;
+  cursor: pointer;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.insight-toggle:hover {
+  border-color: var(--accent-blue);
+  background-color: #fff;
+  color: var(--accent-blue);
+  transform: translateY(-1px);
+  box-shadow: none;
+}
+
+/* Brief body region stays in the DOM for crawlability without changing collapsed card height. */
+.brief-content {
+  overflow: hidden;
+  transition: max-height 280ms ease, opacity 220ms ease;
+}
+
+/* Keep expanded insight copy in the DOM for crawlability while preserving the same visual collapse. */
+.brief-content.collapsed {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.brief-content.expanded {
+  margin-top: 16px;
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.brief-content p {
+  max-width: 720px;
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: var(--muted-text);
+}
+
+.brief-content p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .insights-main {
+    padding: 0 24px;
+  }
+
+  .brief-header h2 {
+    font-size: 28px;
+  }
+
+  .executive-callout {
+    padding: 20px 22px;
+    font-size: 18px;
+    margin-bottom: 48px;
+  }
+
+  .insight-card {
+    margin-bottom: 48px;
+  }
+}

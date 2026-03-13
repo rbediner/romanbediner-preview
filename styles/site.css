@@ -1,0 +1,575 @@
+/* Shared site architecture styles.
+   This file normalizes header and navigation behavior across canonical routes. */
+
+:root {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --h1-size-desktop: 32px;
+  --h1-size-mobile: 22px;
+  /* Global header-to-content spacing token used across canonical page mains. */
+  --page-top-spacing: 72px;
+  --h1-weight: 800;
+  --lede-size: 26px;
+  --lede-weight: 600;
+  --body-size: 16px;
+  --body-line: 1.55;
+  --list-gap: 12px;
+  --list-indent: 18px;
+  --list-item-gap: 10px;
+  --accent-blue: #3b6cff;
+  --brand-tint: rgba(59, 108, 255, 0.05);
+  --border-color: #e6e8ec;
+  --text-primary: #111111;
+  --text-secondary: #555555;
+}
+
+/* Keep semantic nav copy in the DOM for SEO and screen readers without rendering it visually. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.site-header {
+  padding: 6px 0;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-color, #ffffff);
+  z-index: 10;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  text-decoration: none;
+  color: var(--text-color, #111111);
+}
+
+.brand:hover {
+  text-decoration: none;
+  color: var(--text-color, #111111);
+}
+
+.brand-logo {
+  height: 44px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-color, #111111);
+}
+
+.site-nav {
+  display: flex;
+  gap: 32px;
+  font-size: 16px;
+}
+
+.site-nav a {
+  color: var(--text-color, #111111);
+}
+
+.site-nav a:hover {
+  color: var(--accent-blue, #3b6cff);
+}
+
+.site-nav a.active,
+.mobile-nav a.active {
+  color: var(--accent-blue, #3b6cff);
+  font-weight: 600;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  font-size: 16px;
+  color: var(--text-color, #111111);
+  cursor: pointer;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-toggle .menu-icon {
+  width: 18px;
+  height: 2px;
+  background-color: var(--text-color, #111111);
+  display: inline-block;
+  position: relative;
+}
+
+.menu-toggle .menu-icon::before,
+.menu-toggle .menu-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background-color: var(--text-color, #111111);
+}
+
+.menu-toggle .menu-icon::before {
+  top: -6px;
+}
+
+.menu-toggle .menu-icon::after {
+  top: 6px;
+}
+
+.mobile-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background-color: var(--bg-color, #ffffff);
+  border-top: 1px solid var(--border-color, #e6e6e6);
+  display: none;
+  flex-direction: column;
+  padding: 12px 24px 20px 24px;
+  z-index: 20;
+}
+
+.mobile-nav a {
+  padding: 12px 0;
+  font-size: 16px;
+  color: var(--text-color, #111111);
+  text-decoration: none;
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .site-header {
+    padding: 4px 0;
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-nav {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  .brand-logo {
+    height: 44px;
+  }
+}
+
+/* Shared layout and type system for About and Services pages. */
+
+.container,
+.about-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.page-title {
+  margin: 0 0 32px 0;
+}
+
+h1 {
+  font-size: var(--h1-size-desktop);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  font-family: var(--font-sans);
+  font-weight: var(--h1-weight);
+  margin: 0 0 32px 0;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* Canonical page-main spacing contract.
+   Page-specific styles must not set their own top offsets. */
+.page-main,
+.insights-main,
+.about-main,
+.services-main,
+.connect-main,
+body > main {
+  padding-top: var(--page-top-spacing) !important;
+}
+
+.lede-primary {
+  font-size: var(--lede-size);
+  font-weight: var(--lede-weight);
+  line-height: 1.35;
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
+}
+
+.lede-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.brand-highlight {
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+
+/* Preserve existing editorial presentation while allowing contextual inline links for crawlability. */
+.semantic-inline-link,
+.semantic-inline-link:hover,
+.semantic-inline-link:focus,
+.semantic-inline-link:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.manifesto-callout {
+  display: flex;
+  width: 100%;
+  background: rgba(59, 108, 255, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 64px;
+}
+
+.callout-border {
+  width: 4px;
+  background-color: var(--accent-blue);
+  flex-shrink: 0;
+}
+
+.callout-content {
+  padding: 32px 40px;
+}
+
+.shelf-callout {
+  display: flex;
+  width: 100%;
+  background: var(--brand-tint);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.shelf-border {
+  width: 4px;
+  background-color: var(--accent-blue);
+  flex-shrink: 0;
+}
+
+.shelf-content {
+  padding: 32px 40px;
+}
+
+.section {
+  padding-top: 48px;
+}
+
+.section-divider {
+  border-top: 1px solid var(--border-color);
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+.badge-phase {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--brand-tint);
+  color: var(--accent-blue);
+  margin-bottom: 16px;
+}
+
+.insight-card {
+  margin-bottom: 48px;
+}
+
+.section-accent {
+  margin: 24px 0 32px 0;
+}
+
+/* Shared bottom-page transition component used across primary pages. */
+.next-page-nav {
+  margin-top: 100px;
+  margin-bottom: 60px;
+}
+
+.next-page-nav .section-accent {
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+.nav-anchor {
+  display: block;
+  text-decoration: none;
+  max-width: fit-content;
+}
+
+.nav-header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.nav-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+
+.nav-title {
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-arrow {
+  color: var(--accent-blue);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.nav-anchor:hover .nav-title {
+  color: var(--accent-blue);
+  transform: translateX(4px);
+}
+
+.nav-anchor:hover .nav-arrow {
+  transform: translateX(12px);
+}
+
+/* Unified orb bullet system shared across About, Services, and Insights lists. */
+
+.page-main ul,
+main ul {
+  margin: var(--list-gap) 0 0;
+  padding-left: var(--list-indent);
+}
+
+.page-main li,
+main li {
+  margin: 0 0 var(--list-item-gap);
+}
+
+.page-main li:last-child,
+main li:last-child {
+  margin-bottom: 0;
+}
+
+.service-list {
+  list-style: none;
+  margin-top: var(--list-gap);
+  padding-left: var(--list-indent);
+}
+
+.page-main p + ul,
+.page-main p + .service-list {
+  margin-top: 20px;
+}
+
+.service-card ul {
+  margin-top: 20px;
+}
+
+.service-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--list-item-gap);
+  line-height: 1.6;
+  list-style-type: none;
+}
+
+.service-list li::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 14px;
+  margin-top: 0.5em;
+  transform: translateY(-50%);
+  vertical-align: middle;
+  flex-shrink: 0;
+  /* Use canonical bullet icon path under assets/icons to avoid duplicate root icon folders. */
+  background-image: url("/assets/icons/bullet.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.service-card,
+.insight-card,
+.philosophy-card {
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.footer {
+  padding: 48px 0;
+  border-top: 1px solid var(--neutral-border, var(--border-color, #e6e6e6));
+}
+
+.footer p {
+  max-width: 960px;
+  margin: 0 auto 12px auto;
+  text-align: center;
+}
+
+.footer-primary {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color, #111111);
+}
+
+.footer-meta {
+  font-size: 0.85rem;
+  color: var(--muted-text, #6a6a6a);
+  opacity: 0.65;
+}
+
+/* Footer literary quote block is responsive and wraps naturally as width narrows. */
+.footer-quote-block {
+  max-width: 420px;
+  margin: 16px auto 0 auto;
+  text-align: left;
+}
+
+.footer-quote {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.45;
+  color: rgba(31, 41, 55, 0.72);
+  margin: 0;
+}
+
+.footer-quote-author {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 13px;
+  margin-top: 8px;
+  color: rgba(31, 41, 55, 0.55);
+}
+
+/* Override generic footer paragraph centering only for quote lines. */
+.footer .footer-quote,
+.footer .footer-quote-author {
+  margin: 0;
+  text-align: left;
+  max-width: none;
+}
+
+.footer .footer-quote-author {
+  margin-top: 8px;
+}
+
+@media (max-width: 640px) {
+  .footer-quote-block {
+    max-width: 300px;
+    margin-top: 14px;
+  }
+
+  .footer-quote {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .footer-quote-author {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: 32px;
+  }
+
+  h1 {
+    font-size: var(--h1-size-mobile);
+    white-space: normal;
+  }
+
+  .page-title {
+    margin: 40px 0 24px 0;
+  }
+
+  .lede-primary {
+    font-size: 22px;
+  }
+
+  .lede-description {
+    font-size: 17px;
+  }
+
+  .shelf-content {
+    padding: 24px;
+  }
+
+  .nav-title {
+    font-size: 28px;
+  }
+}
+
+/* Typography Guardrail */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans) !important;
+}
+
+body {
+  font-family: var(--font-sans) !important;
+}

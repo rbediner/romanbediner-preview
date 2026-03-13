@@ -1,0 +1,292 @@
+/* Home page layout system.
+   This stylesheet intentionally owns only Home-specific structure and spacing. */
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --muted-text: #6a6a6a;
+  --border-color: #e6e6e6;
+  --accent-blue: #3b6cff;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.page-main {
+  padding: 0 0 56px 0;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0;
+}
+
+p {
+  font-size: 18px;
+  color: var(--muted-text);
+  max-width: 720px;
+  margin: 0;
+}
+
+/* Tighten paragraph-to-divider spacing only when they are directly adjacent. */
+p + hr,
+p + .divider {
+  margin-top: 24px;
+}
+
+/* =========================================
+   MASTER LAYOUT GRID
+   ========================================= */
+.master-layout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-areas:
+    "head head"
+    "blurb photo"
+    "experience photo"
+    "focus photo"
+    "principles principles";
+  column-gap: 48px;
+  row-gap: 56px;
+  align-items: start;
+  padding-bottom: 56px;
+}
+
+/* Header spans both columns so title and callout share the hero boundary. */
+.hero-head,
+.master-head {
+  grid-area: head;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  min-width: 0;
+}
+
+main .master-head h1 {
+  margin-bottom: 18px;
+  max-width: 100%;
+}
+
+/* Subhead fills the grid width and aligns with photo edge. */
+.master-head .subhead.executive-callout {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px 28px;
+  border-left: 4px solid var(--accent-blue);
+  background-color: rgba(59, 108, 255, 0.04);
+  border-radius: 0 8px 8px 0;
+}
+
+.master-head .subhead.executive-callout strong {
+  font-weight: 600;
+  color: var(--accent-blue);
+}
+
+/* Photo container enforces the native source aspect ratio and rounded crop. */
+.master-photo {
+  grid-area: photo;
+  width: 100%;
+  /* Matches the source ratio (1022 / 1360). */
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--surface-color);
+}
+
+.master-photo img {
+  width: 100%;
+  height: 100%;
+  /* Fill the 3:4 frame without distorting pixels. */
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Left column content stack under the shared rhythm. */
+.master-blurb {
+  grid-area: blurb;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.master-blurb p {
+  font-size: 20px;
+  max-width: 760px;
+  margin: 0;
+}
+
+#experience.master-section {
+  grid-area: experience;
+  grid-column: 1;
+  grid-row: 3;
+}
+
+#areas-of-focus.master-section {
+  grid-area: focus;
+  grid-column: 1;
+  grid-row: 4;
+}
+
+/* Operating principles expands across both columns as final row. */
+#operating-principles.master-section-full {
+  grid-area: principles;
+  grid-column: 1 / -1;
+  grid-row: 5;
+}
+
+.section-title {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.section-icon {
+  width: auto;
+  height: 22px;
+  flex-shrink: 0;
+  position: relative;
+  top: 2px;
+}
+
+.section-body {
+  margin-top: 24px;
+}
+
+.section-body p {
+  margin: 0;
+}
+
+/* Hidden semantic support copy for search indexing without visual impact. */
+.semantic-authority {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
+}
+
+/* Preserve existing interactive affordances used across pages. */
+button,
+.btn {
+  transition: all 0.2s ease;
+}
+
+button:hover,
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(45, 92, 255, 0.35);
+  outline-offset: 2px;
+}
+
+@media (min-width: 900px) {
+  main .master-head h1 {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 900px) {
+  main .master-head h1 {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-main {
+    padding: 0 0 40px 0;
+  }
+
+  .master-layout-grid {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+
+  .master-head {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: none;
+    margin: 0;
+  }
+
+  .master-head .subhead.executive-callout {
+    font-size: 18px;
+    padding: 16px 20px;
+  }
+
+  .master-blurb {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .master-photo {
+    grid-column: 1;
+    grid-row: 3;
+    max-width: 400px;
+    margin: 0 auto 32px auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  #experience.master-section {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  #areas-of-focus.master-section {
+    grid-column: 1;
+    grid-row: 5;
+  }
+
+  #operating-principles.master-section-full {
+    grid-column: 1;
+    grid-row: 6;
+  }
+
+  .section-body {
+    margin-top: 20px;
+  }
+}
