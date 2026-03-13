@@ -19,8 +19,8 @@
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/romanbediner-preview/about/" },
+  { label: "Framework", href: "/framework/" },
   { label: "Services", href: "/romanbediner-preview/services/" },
-  { label: "Insights", href: "/romanbediner-preview/insights/" },
   { label: "Connect", href: "/romanbediner-preview/connect/" }
 ];
 
