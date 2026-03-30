@@ -33,7 +33,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
   <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
-  <link rel="stylesheet" href="/romanbediner-preview/styles/site.css?v=edfb246a9046" />
+  <link rel="stylesheet" href="/romanbediner-preview/styles/site.css?v=2d754b90dd26" />
   <link rel="stylesheet" href="/romanbediner-preview/styles/home.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="assets/icons/home/mainlogo.svg">
@@ -124,7 +124,15 @@
       </div>
 
       <div class="master-photo">
-        <img src="assets/images/website-photo.png" alt="Roman Bediner" />
+        <!-- Keep explicit dimensions so the hero reserves space before the image finishes decoding. -->
+        <img
+          src="assets/images/website-photo.jpg"
+          alt="Roman Bediner"
+          width="1022"
+          height="1360"
+          decoding="async"
+          fetchpriority="high"
+        />
       </div>
 
       <div class="master-blurb">
@@ -202,6 +210,6 @@
     </div>
   </footer>
 
-  <script src="scripts/runtime/site-navigation.js?v=edfb246a9046"></script>
+  <script src="scripts/runtime/site-navigation.js?v=2d754b90dd26"></script>
 </body>
 </html>
