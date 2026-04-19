@@ -20,6 +20,7 @@ const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/romanbediner-preview/about/" },
   { label: "Framework", href: "/romanbediner-preview/framework/" },
+  { label: "Resources", href: "/resources/" },
   { label: "Services", href: "/romanbediner-preview/services/" },
   { label: "Connect", href: "/romanbediner-preview/connect/" }
 ];
@@ -65,6 +66,19 @@ function renderSharedNav(navElement) {
     const resolvedHref = resolveNavHref(link.href, basePath);
     return `<a href="${resolvedHref}">${link.label}</a>`;
   }).join("");
+}
+
+// Resolve the canonical nav destination that should be marked active for a route.
+function resolveActiveNavHref(activePath) {
+  if (activePath === "/") {
+    return "/";
+  }
+
+  const parentMatch = NAV_LINKS.find((link) => (
+    link.href !== "/" && activePath.startsWith(link.href)
+  ));
+
+  return parentMatch ? parentMatch.href : activePath;
 }
 
 function resolveEnvironment() {
@@ -219,9 +233,10 @@ function applyActiveNavState(navElement, activePath) {
   if (!navElement) {
     return;
   }
+  const activeHref = resolveActiveNavHref(activePath);
   navElement.querySelectorAll("a").forEach((link) => {
     const href = link.getAttribute("href");
-    if (href && normalizePath(href) === activePath) {
+    if (href && normalizePath(href) === activeHref) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
     } else {
