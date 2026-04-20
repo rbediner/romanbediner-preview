@@ -28,7 +28,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png" />
   <link rel="shortcut icon" href="../../assets/favicon/favicon.ico" />
-  <link rel="stylesheet" href="/romanbediner-preview/styles/site.css?v=e1cc91492f7d" />
+  <link rel="stylesheet" href="/romanbediner-preview/styles/site.css?v=cff65551a80f" />
   <link rel="stylesheet" href="/romanbediner-preview/styles/resources.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
   <meta name="ga4-measurement-id" content="G-DVHD0KL633" />
@@ -131,11 +131,15 @@
     <!-- Live dashboard artifact container -->
     <section class="resource-dashboard-artifact-section" aria-label="Interactive dashboard">
 
-      <!-- Desktop and tablet: live dashboard (iframe wired in Phase 5) -->
+      <!-- Desktop and tablet: live dashboard iframe (same-origin artifact route). -->
       <div class="resource-dashboard-frame-shell" aria-label="Dashboard artifact frame">
-        <div class="resource-dashboard-frame-placeholder" aria-hidden="true">
-          <!-- Live dashboard will be embedded here in Phase 5 -->
-        </div>
+        <iframe
+          class="resource-dashboard-frame-iframe"
+          src="/romanbediner-preview/ai-enabled-operations-dashboard/"
+          title="AI-Enabled Operations Dashboard interactive view"
+          loading="eager"
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
       </div>
 
       <!-- Mobile fallback: inline, no modal -->
@@ -233,7 +237,7 @@
     </div>
   </footer>
 
-  <script src="../../scripts/runtime/site-navigation.js?v=e1cc91492f7d"></script>
+  <script src="../../scripts/runtime/site-navigation.js?v=cff65551a80f"></script>
   <script src="../../scripts/runtime/resources-analytics.js" defer></script>
 </body>
 </html>
