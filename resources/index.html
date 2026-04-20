@@ -28,7 +28,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png" />
   <link rel="shortcut icon" href="../assets/favicon/favicon.ico" />
-  <link rel="stylesheet" href="/romanbediner-preview/styles/site.css?v=28d5e37082bc" />
+  <link rel="stylesheet" href="/romanbediner-preview/styles/site.css?v=38a6b8183216" />
   <link rel="stylesheet" href="/romanbediner-preview/styles/resources.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
   <meta name="ga4-measurement-id" content="G-DVHD0KL633" />
@@ -108,15 +108,20 @@
       </article>
     </section>
 
-    <!-- Companion CTA stays secondary to the resource cards, but should still close the page with intent. -->
-    <aside class="resources-inset-cta resource-companion-panel" aria-label="Return to the full framework">
-      <div class="resource-panel-accent" aria-hidden="true"></div>
-      <p class="resources-inset-cta-copy">Prefer the complete six-stage model in long form?</p>
-      <a class="resource-companion-cta" href="/romanbediner-preview/framework/">
-        <span>Explore the Full Framework</span>
-        <span class="resource-companion-cta-arrow" aria-hidden="true">&rarr;</span>
+    <section class="next-page-nav resources-forward-nav">
+      <div class="page-nav-divider" aria-hidden="true"></div>
+      <div class="section-accent"></div>
+      <a href="/romanbediner-preview/framework/" class="nav-anchor">
+        <div class="nav-header-row">
+          <span class="nav-label">Explore the Full Framework</span>
+          <svg class="nav-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+        <span class="nav-title sr-only">Transition to Framework</span>
       </a>
-    </aside>
+    </section>
   </main>
 
   <footer class="footer">
@@ -136,7 +141,7 @@
     </div>
   </footer>
 
-  <script src="../scripts/runtime/site-navigation.js?v=28d5e37082bc"></script>
+  <script src="../scripts/runtime/site-navigation.js?v=38a6b8183216"></script>
   <script src="../scripts/runtime/resources-analytics.js" defer></script>
 </body>
 </html>
