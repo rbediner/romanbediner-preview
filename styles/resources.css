@@ -1001,7 +1001,7 @@
   margin-top: 24px;
 }
 
-/* Top CTA row — sits between supporting subhead and blue callout */
+/* Top CTA row — sits after the blue callout, before content sections */
 .resource-dashboard-top-cta {
   display: flex;
   flex-wrap: wrap;
@@ -1025,28 +1025,12 @@
 .resource-dashboard-screen-story {
   margin: 0;
   padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 14px;
 }
 
 .resource-dashboard-screen-story li {
-  position: relative;
-  padding-left: 20px;
   font-size: 16px;
   line-height: 1.65;
   color: var(--text-primary);
-}
-
-.resource-dashboard-screen-story li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 11px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(59, 108, 255, 0.56);
 }
 
 /* Live dashboard artifact container */
