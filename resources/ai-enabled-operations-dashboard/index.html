@@ -28,7 +28,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png" />
   <link rel="shortcut icon" href="../../assets/favicon/favicon.ico" />
-  <link rel="stylesheet" href="/romanbediner-preview/styles/site.css?v=7bb2699d0fef" />
+  <link rel="stylesheet" href="/romanbediner-preview/styles/site.css?v=bce21595de2c" />
   <link rel="stylesheet" href="/romanbediner-preview/styles/resources.css" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
   <meta name="ga4-measurement-id" content="G-DVHD0KL633" />
@@ -116,6 +116,7 @@
           src="/romanbediner-preview/ai-enabled-operations-dashboard/"
           title="AI-Enabled Operations Dashboard interactive view"
           loading="eager"
+          allowfullscreen
           referrerpolicy="strict-origin-when-cross-origin">
         </iframe>
       </div>
@@ -129,6 +130,13 @@
         <a class="resource-primary-cta resource-dashboard-mobile-cta" href="https://github.com/rbediner/ai-enabled-operations-dashboard" target="_blank" rel="noopener noreferrer">View Source Code</a>
       </div>
     </section>
+    <button
+      type="button"
+      class="resource-dashboard-expand-cta"
+      aria-label="Expand dashboard to fullscreen"
+      data-dashboard-expand>
+      EXPAND DASHBOARD
+    </button>
     <p class="resource-dashboard-helper-line">Source package and supporting artifacts below.</p>
 
     <!-- What This Dashboard Helps Answer -->
@@ -311,8 +319,9 @@
     </div>
   </footer>
 
-  <script src="../../scripts/runtime/site-navigation.js?v=7bb2699d0fef"></script>
+  <script src="../../scripts/runtime/site-navigation.js?v=bce21595de2c"></script>
   <script src="../../scripts/runtime/resources-analytics.js" defer></script>
+  <script src="../../scripts/runtime/dashboard-expand.js" defer></script>
   <script src="../../scripts/runtime/dashboard-wireframe-modal.js" defer></script>
 </body>
 </html>
