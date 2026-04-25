@@ -2,7 +2,7 @@
    Shared layout tokens, callouts, typography, and section rhythm live in styles/site.css. */
 
 .services-main {
-  padding-bottom: 56px;
+  padding-bottom: 24px;
 }
 
 .section-accent {
@@ -165,17 +165,18 @@
 }
 
 .svc-impact-label {
-  font-size: 11px;
+  /* Keep impact label visibly larger than body copy for quick scan hierarchy. */
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #b8924a;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .svc-impact p {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--text-primary);
   line-height: 1.6;
 }
