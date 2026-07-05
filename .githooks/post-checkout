@@ -1,0 +1,3 @@
+#!/bin/sh
+_dg_root="$(git rev-parse --show-toplevel 2>/dev/null)"
+[ -f "$_dg_root/scripts/clean-drive-drift.sh" ] && bash "$_dg_root/scripts/clean-drive-drift.sh" --fix --quiet || true
